@@ -5,7 +5,6 @@
 	let names = [];
 	let id;
 
-	console.log({ names });
 	onMount(async () => {
 		const res = await fetch(`/api/invite${location.search}`);
 
@@ -72,7 +71,7 @@
 				{/each}
 
 				<input type="hidden" name="id" value={id} />
-				<button type="send">Submit</button>
+				<button type="submit">Submit</button>
 			</form>
 		{/if}
 	</div>
