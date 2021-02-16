@@ -46,32 +46,34 @@
 			</div>
 		{/if}
 
-		<form action="#" id="rsvp-form">
-			<p>Please RSVP below:</p>
-			{#each names as { name }}
-				<label class="checkbox">
-					<span class="checkbox__input">
-						<input type="checkbox" {name} />
-						<span class="checkbox__control">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 24 24"
-								aria-hidden="true"
-								focusable="false">
-								<path
-									fill="none"
-									stroke="currentColor"
-									stroke-width="3"
-									d="M1.73 12.91l6.37 6.37L22.79 4.59" />
-							</svg>
+		{#if id}
+			<form action="#" id="rsvp-form">
+				<p>Please RSVP below:</p>
+				{#each names as { name }}
+					<label for={name} class="checkbox">
+						<span class="checkbox__input">
+							<input type="checkbox" {name} />
+							<span class="checkbox__control">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									aria-hidden="true"
+									focusable="false">
+									<path
+										fill="none"
+										stroke="currentColor"
+										stroke-width="3"
+										d="M1.73 12.91l6.37 6.37L22.79 4.59" />
+								</svg>
+							</span>
 						</span>
-					</span>
-					<span class="radio__label">{name}</span>
-				</label>
-			{/each}
+						<span class="radio__label">{name}</span>
+					</label>
+				{/each}
 
-			<input type="hidden" name="id" value={id} />
-			<button type="send" id="rsvp">Submit</button>
-		</form>
+				<input type="hidden" name="id" value={id} />
+				<button type="send">Submit</button>
+			</form>
+		{/if}
 	</div>
 </main>

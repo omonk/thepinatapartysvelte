@@ -100,6 +100,19 @@ form {
   display: flex;
   flex-direction: column;
   font-size: 2rem;
+
+  button {
+    appearance: none;
+    -webkit-appearance: button;
+    padding: 2rem 1rem;
+    border: none;
+    background-color: var(--blue);
+    border-radius: 24px;
+    font-size: 3rem;
+    font-family: "Bungee Outline";
+    color: var(--black);
+    margin: 1rem 0;
+  }
 }
 
 .checkbox {
@@ -114,19 +127,6 @@ form {
   &--disabled {
     color: var(--disabled);
   }
-}
-
-button {
-  appearance: none;
-  -webkit-appearance: button;
-  padding: 2rem 1rem;
-  border: none;
-  background-color: var(--blue);
-  border-radius: 24px;
-  font-size: 3rem;
-  font-family: "Bungee Outline";
-  color: var(--black);
-  margin: 1rem 0;
 }
 
 .checkbox__control {
