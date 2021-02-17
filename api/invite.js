@@ -1,3 +1,4 @@
+const cookie = require("cookie");
 const Handlebars = require("handlebars");
 const markdown = require("helper-markdown");
 const { getInvite } = require("../src/api");
@@ -41,7 +42,7 @@ const template = Handlebars.compile(`
   {{/markdown}}
 `);
 
-const rsvp = async (req, res) => {
+const invite = async (req, res) => {
   const id = req.query.id;
 
   try {
@@ -53,9 +54,13 @@ const rsvp = async (req, res) => {
       content: template(),
     });
     res.status(200);
-    res.setHeader("Set-Cookie", [
-      `pinata-rsvp=${id}; Expires ${new Date(2022, 01, 01)}; HttpOnly`,
-    ]);
+    res.setHeader(
+      "Set-Cookie",
+      cookie.serialize("pp-id", id, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 24 * 180, // ~ 6 months
+      })
+    );
   } catch (e) {
     res.status(403);
   }
@@ -63,4 +68,4 @@ const rsvp = async (req, res) => {
   res.send();
 };
 
-module.exports = rsvp;
+module.exports = invite;
