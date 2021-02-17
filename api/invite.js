@@ -42,25 +42,32 @@ const template = Handlebars.compile(`
   {{/markdown}}
 `);
 
+const PP_ID = "pp-id";
 const invite = async (req, res) => {
-  const id = req.query.id;
+  const queryId = req.query.id;
+  const cookieId = req.cookies[PP_ID];
+
+  const id = (queryId || cookieId) ?? null;
 
   try {
     const invite = await getInvite(id);
 
+    if (!cookieId) {
+      res.setHeader(
+        "Set-Cookie",
+        cookie.serialize(PP_ID, id, {
+          httpOnly: true,
+          maxAge: 60 * 60 * 24 * 180, // ~ 6 months
+        })
+      );
+    }
+
+    res.status(200);
     res.json({
       invite,
       id,
       content: template(),
     });
-    res.status(200);
-    res.setHeader(
-      "Set-Cookie",
-      cookie.serialize("pp-id", id, {
-        httpOnly: true,
-        maxAge: 60 * 60 * 24 * 180, // ~ 6 months
-      })
-    );
   } catch (e) {
     res.status(403);
   }

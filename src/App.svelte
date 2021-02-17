@@ -20,7 +20,9 @@
     });
 
   onMount(async () => {
-    const res = await fetch(`/api/invite${location.search}`);
+    const res = await fetch(`/api/invite${location.search}`, {
+      credentials: "same-origin",
+    });
 
     if (res.ok) {
       const data = await res.json();
