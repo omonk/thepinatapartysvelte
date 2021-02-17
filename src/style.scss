@@ -16,7 +16,6 @@
 }
 
 body {
-  color: var(--white);
   font-family: "Open Sans", sans-serif;
   font-style: italic;
   background-color: var(--white);
@@ -77,6 +76,7 @@ html {
 
 .md {
   background: var(--green);
+  color: var(--white);
   letter-spacing: -1px;
   padding: 2rem 0.75rem;
   text-transform: uppercase;
@@ -97,6 +97,13 @@ html {
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+
+  i {
+    font-style: normal;
+    font-size: 2rem;
+    display: inline-block;
+    margin-left: 0.5rem;
   }
 }
 

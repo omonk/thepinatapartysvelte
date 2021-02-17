@@ -13,19 +13,19 @@ const template = Handlebars.compile(`
 
   After a few months of Winter X Lockdown we thought why not celebrate Summer and (hopefully) the end of lockdown.
 
-  ## When is it? 🗓
+  ## When is it? <i>🗓</i>
   
-  17ᵀᴴ July 2020
+  2pm till late - 17ᵀᴴ July 2020
 
-  ## Where is it? 📍
+  ## Where is it? <i>📍</i>
 
   [13 Woodland Mews SW16 2AG](https://goo.gl/maps/k3GSHCZBXoQT6kaZ6)
   
-  ## Why is this happening? 🤔
+  ## Why is this happening? <i>🤔</i>
 
-  Do we need an excuse??!
+  Do we need an excuse?! But in all seriousness we need something to look forward to
 
-  ## What to expect? 🌮
+  ## What to expect? <i>🌮</i>
 
   Mexican street food. Think tacos, think corn, think a field of coriander, think more tacos, think a piñata, think tequila, think even more tacos...
 
@@ -33,9 +33,9 @@ const template = Handlebars.compile(`
 
   ## What do I bring? 
 
-  Booze and a smile
+  A record of your vaccine and some booze. Just kidding, the booze is fine.
 
-  ## What about covid? 🦠
+  ## What about covid? <i>🦠</i>
 
   We will cancel if we're not allowed large gatherings by July :(
   {{/markdown}}
@@ -53,6 +53,9 @@ const rsvp = async (req, res) => {
       content: template(),
     });
     res.status(200);
+    res.setHeader("Set-Cookie", [
+      `pinata-rsvp=${id}; Expires ${new Date(2022, 01, 01)}; HttpOnly`,
+    ]);
   } catch (e) {
     res.status(403);
   }

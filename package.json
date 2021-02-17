@@ -6,7 +6,7 @@
     "dev": "concurrently \"rollup -c -w\" \"npm run styles\"",
     "start": "sirv public",
     "build:styles": "sass src/style.scss public/style.css --style=compressed",
-    "styles": "npm run build:styles --watch"
+    "styles": "sass src/style.scss public/style.css --style=compressed --watch"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
