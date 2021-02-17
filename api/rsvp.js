@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   let invite = await getInvite(inviteId);
 
   invite.names = invite.names.map(item => {
-    return { ...item, rsvp: body[item.name] === "on" };
+    return { ...item, rsvp: Boolean(body.rsvp[item.name]) };
   });
 
   await setInvite(inviteId, invite);
