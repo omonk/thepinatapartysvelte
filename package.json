@@ -2,10 +2,11 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run styles && rollup -c",
+    "build": "npm run build:styles && rollup -c",
     "dev": "concurrently \"rollup -c -w\" \"npm run styles\"",
     "start": "sirv public",
-    "styles": "sass --watch src/style.scss public/style.css --style=compressed"
+    "build:styles": "sass src/style.scss public/style.css --style=compressed",
+    "styles": "npm run build:styles --watch"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
