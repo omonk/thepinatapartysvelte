@@ -136,6 +136,8 @@ form {
     font-style: normal;
     transform: skew(-10deg);
     transition: opacity ease 400ms;
+    width: 95%;
+    max-width: 500px;
 
     &:disabled {
       opacity: 0.5;

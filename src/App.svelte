@@ -12,11 +12,7 @@
   let hasRsvp = false;
 
   $: isValid =
-    names.length == 0 ||
-    names.every((n) => {
-      console.log({ n });
-      return formGroup[n.name] != null;
-    });
+    names.length == 0 || names.every((n) => formGroup[n.name] != null);
 
   onMount(async () => {
     const res = await fetch(`/api/invite${location.search}`, {
