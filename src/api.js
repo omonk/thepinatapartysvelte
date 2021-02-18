@@ -15,7 +15,7 @@ const getInvites = async () => {
   return JSON.parse(files["db.json"].content).invites;
 };
 
-const setInvites = async newInvites => {
+const setInvites = async (newInvites) => {
   const res = await fetch(
     `https://omonk:${ghToken}@api.github.com/gists/${gistID}`,
     {
@@ -35,7 +35,7 @@ const setInvites = async newInvites => {
   if (!res.ok) throw new Error(`gist update did not occur ${res.status}`);
 };
 
-const getInvite = async id => {
+const getInvite = async (id) => {
   const invites = await getInvites();
   const invite = invites[id];
 
