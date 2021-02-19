@@ -1,4 +1,4 @@
-const { getInvite, setInvite } = require("../src/api");
+const { getInvite, setInvite } = require("../../src/api");
 
 module.exports = async (req, res) => {
   const { body } = req;

@@ -1,11 +1,13 @@
 const cookie = require("cookie");
 const Handlebars = require("handlebars");
 const markdown = require("helper-markdown");
-const { getInvite } = require("../src/api");
+const { getInvite, getInvites } = require("../../src/api");
 
 Handlebars.registerHelper("markdown", markdown({}));
 
 const template = Handlebars.compile(`
+  <h2 class="hello">Well hey there {{names}}! 👋</h2>
+
   {{#markdown}}
   
   ## What is this?
@@ -42,7 +44,8 @@ const template = Handlebars.compile(`
   {{/markdown}}
 `);
 
-const PP_ID = "pp-id";
+const PP_ID = "pinata-id";
+
 const invite = async (req, res) => {
   const queryId = req.query.id;
   const cookieId = req.cookies[PP_ID];
@@ -66,9 +69,15 @@ const invite = async (req, res) => {
     res.json({
       invite,
       id,
-      content: template(),
+      content: template({
+        names: invite.names
+          .map((i) => i.name)
+          .join(", ")
+          .replace(/,(?!.*,)/gim, " and"),
+      }),
     });
   } catch (e) {
+    console.log({ e });
     res.status(403);
   }
 
