@@ -84,11 +84,12 @@ const chosenIds = [];
 
 const generateId = () => {
   const idx = random(0, ids.length);
-  if (chosenIds.includes(idx)) {
+  const newId = ids[idx];
+
+  if (chosenIds.includes(newId)) {
     return generateId();
   }
 
-  const newId = ids[idx];
   chosenIds.push(newId);
 
   return newId;
