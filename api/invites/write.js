@@ -88,7 +88,10 @@ const generateId = () => {
     return generateId();
   }
 
-  return ids[idx];
+  const newId = ids[idx];
+  chosenIds.push(newId);
+
+  return newId;
 };
 
 const makeNameInvite = (n) => ({ name: n, rsvp: null });
