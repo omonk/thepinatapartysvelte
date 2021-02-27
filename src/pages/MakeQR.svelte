@@ -7,7 +7,7 @@
     const qrCode = new QRCodeStyling({
       width: 300,
       height: 300,
-      data: `https://thepinata.party/id=${invite}`,
+      data: `https://thepinata.party?id=${invite}`,
       margin: 0,
       qrOptions: { typeNumber: "0", mode: "Byte", errorCorrectionLevel: "Q" },
       imageOptions: { hideBackgroundDots: true, imageSize: 0.5, margin: 0 },
