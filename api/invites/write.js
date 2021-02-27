@@ -22,9 +22,13 @@ const names = [
   ["Joel", "Becki"],
   ["Sorab"],
   ["Tobin"],
-  ["Donners"],
+  ["Donners", "Milbs"],
   ["Katie", "Mike"],
   ["Hailey", "Helena"],
+  ["VB", "Tor"],
+  ["AJ"],
+  ["Crispin", "+1"],
+  ["Alex", "Amanda"],
 ];
 
 const ids = [
@@ -78,12 +82,15 @@ const ids = [
   "long.snares.securing",
   "enclosure.busier.hems",
   "considers.disrespect.slushy",
+  "partners.cheat.develops",
+  "panic.snored.thing",
+  "curiosity.fight.rich",
 ];
 
 const chosenIds = [];
 
 const generateId = () => {
-  const idx = random(0, ids.length);
+  const idx = random(0, ids.length - 1);
   const newId = ids[idx];
 
   if (chosenIds.includes(newId)) {
@@ -102,9 +109,11 @@ const makeInvites = (nameGroups) => {
   let invites = {};
 
   nameGroups.map((name) => {
+    const id = generateId();
+
     invites = {
       ...invites,
-      ...{ [generateId()]: { names: name.map(makeNameInvite) } },
+      ...{ [id]: { names: name.map(makeNameInvite) } },
     };
   });
 
@@ -112,6 +121,10 @@ const makeInvites = (nameGroups) => {
 };
 
 module.exports = async (req, res) => {
+  if (names.length > ids.length) {
+    throw new Error("Too many names!");
+  }
+
   await setInvites(makeInvites(names));
 
   res.status(200);

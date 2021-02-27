@@ -4,7 +4,7 @@
   "scripts": {
     "build": "npm run build:styles && rollup -c",
     "dev": "concurrently \"rollup -c -w\" \"npm run styles\"",
-    "start": "sirv public",
+    "start": "sirv public --single",
     "build:styles": "sass src/style.scss public/style.css --style=compressed",
     "styles": "sass src/style.scss public/style.css --style=compressed --watch"
   },
@@ -29,6 +29,7 @@
     "handlebars": "^4.7.7",
     "helper-markdown": "^1.0.0",
     "lodash": "^4.17.20",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "page": "^1.11.6"
   }
 }

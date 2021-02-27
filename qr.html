@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>QR Code Styling</title>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/qr-code-styling@1.3.3/lib/qr-code-styling.js"
+    ></script>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script type="text/javascript">
+      const keys = [
+        "hugs.sobs.roaring",
+        "comparing.example.sunscreen",
+        "aquatic.reply.blues",
+        "evaporates.strainers.conforming",
+        "dealmaker.waitress.poke",
+        "pose.dressy.flirts",
+        "frustrated.sally.hobnobbed",
+        "arming.tasty.novel",
+        "fallen.domestic.oils",
+        "moats.bolts.captures",
+        "factoring.nabbed.daily",
+        "ignited.footing.capillary",
+        "project.stopped.jazzy",
+        "enviably.spawned.prefacing",
+        "approve.friction.potions",
+        "imported.feared.intelligible",
+        "considers.disrespect.slushy",
+        "flipper.machine.blanks",
+        "another.veto.prayers",
+        "javelin.graver.avoid",
+        "archives.submit.points",
+        "rigid.orchids.themes",
+        "reliving.sloped.wording",
+      ];
+
+      keys.map((k) => {
+        const qrCode = new QRCodeStyling({
+          width: 300,
+          height: 300,
+          data: `https://thepinata.party?id=${k}`,
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+          dotsOptions: {
+            color: "#4267b2",
+            type: "rounded",
+          },
+          backgroundOptions: {
+            color: "#e9ebee",
+          },
+          imageOptions: {
+            crossOrigin: "anonymous",
+            margin: 20,
+          },
+        });
+
+        console.log({ qrCode });
+
+        qrCode.append(document.getElementById("canvas"));
+      });
+    </script>
+  </body>
+</html>

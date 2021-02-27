@@ -50,7 +50,13 @@ const invite = async (req, res) => {
   const queryId = req.query.id;
   const cookieId = req.cookies[PP_ID];
 
-  const id = (queryId || cookieId) ?? null;
+  let id = null;
+
+  if (queryId) {
+    id = queryId;
+  } else if (cookieId) {
+    id = queryId;
+  }
 
   try {
     const invite = await getInvite(id);
