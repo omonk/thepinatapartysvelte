@@ -120,13 +120,13 @@ const makeInvites = (nameGroups) => {
   return invites;
 };
 
-module.exports = async (req, res) => {
-  if (names.length > ids.length) {
-    throw new Error("Too many names!");
-  }
+// module.exports = async (req, res) => {
+//   if (names.length > ids.length) {
+//     throw new Error("Too many names!");
+//   }
 
-  await setInvites(makeInvites(names));
+//   await setInvites(makeInvites(names));
 
-  res.status(200);
-  res.send({});
-};
+//   res.status(200);
+//   res.send({});
+// };

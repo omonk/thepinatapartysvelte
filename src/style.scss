@@ -219,13 +219,14 @@ form {
 
   > div {
     border-radius: 1.5mm;
-    border: 1px solid black;
+    // border: 1px solid black;
     overflow: hidden;
     width: 40mm;
     height: 40mm;
     display: flex;
     flex-direction: column-reverse;
     padding: 2mm;
+    padding-bottom: 4mm;
 
     canvas {
       width: 30mm;
