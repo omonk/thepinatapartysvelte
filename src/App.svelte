@@ -9,7 +9,6 @@
   let params;
 
   router("/", () => (page = Home));
-  router("/qr", () => (page = QR));
 
   router.start();
 </script>
