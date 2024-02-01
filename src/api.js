@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const ghToken = "86ce6884b7161cdd8aa47175a89963950b24fd4c";
+const ghToken = process.env.GIST_TOKEN;
 const gistID = "e01b9d3de1630eb0b216b086979c2f94";
 
 const getInvites = async () => {
